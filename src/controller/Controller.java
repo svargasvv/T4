@@ -22,11 +22,11 @@ public class Controller {
 	public Controller() {
 		view = new MovingViolationsManagerView();
 		
-		//TODO, inicializar las estructuras de datos para la carga de informacion de archivos
+		//TODO inicializar las estructuras de datos para la carga de informacion de archivos
 	}
 
 	/**
-	 * Leer los datos de las infracciones de los archivos.
+	 * Leer los datos de las infracciones de los archivos. Cada infraccion debe ser Comparable para ser usada en los ordenamientos.
 	 * Todas infracciones (MovingViolation) deben almacenarse en una Estructura de Datos (en el mismo orden como estan los archivos)
 	 * A partir de estos datos se obtendran muestras para evaluar los algoritmos de ordenamiento
 	 * @return numero de infracciones leidas 
@@ -47,7 +47,7 @@ public class Controller {
 	{
 		muestra = new Comparable[ n ];
 					
-		// TODO Llenar la muestra aleatoria con los datos guardado en la estructura de datos
+		// TODO Llenar la muestra aleatoria con los datos guardados en la estructura de datos
 		
 		return muestra;
 		
@@ -142,6 +142,10 @@ public class Controller {
 					{    
 						view.printDatosMuestra( nMuestra, muestra);
 					}
+					else
+					{
+						view.printMensage("Muestra invalida");
+					}
 					break;
 
 				case 4:
@@ -153,7 +157,12 @@ public class Controller {
 						this.ordenarShellSort(muestraCopia);
 						endTime = System.currentTimeMillis();
 						duration = endTime - startTime;
+						view.printMensage("Ordenamiento generado en una copia de la muestra");
 						view.printMensage("Tiempo de ordenamiento ShellSort: " + duration + " milisegundos");
+					}
+					else
+					{
+						view.printMensage("Muestra invalida");
 					}
 					break;
 					
@@ -166,7 +175,12 @@ public class Controller {
 						this.ordenarMergeSort(muestraCopia);
 						endTime = System.currentTimeMillis();
 						duration = endTime - startTime;
+						view.printMensage("Ordenamiento generado en una copia de la muestra");
 						view.printMensage("Tiempo de ordenamiento MergeSort: " + duration + " milisegundos");
+					}
+					else
+					{
+						view.printMensage("Muestra invalida");
 					}
 					break;
 											
@@ -179,7 +193,12 @@ public class Controller {
 						this.ordenarQuickSort(muestraCopia);
 						endTime = System.currentTimeMillis();
 						duration = endTime - startTime;
+						view.printMensage("Ordenamiento generado en una copia de la muestra");
 						view.printMensage("Tiempo de ordenamiento QuickSort: " + duration + " milisegundos");
+					}
+					else
+					{
+						view.printMensage("Muestra invalida");
 					}
 					break;
 											
@@ -187,6 +206,10 @@ public class Controller {
 					// Mostrar los datos de la muestra ordenada (muestra copia)
 					if ( nMuestra > 0 && muestraCopia != null && muestraCopia.length == nMuestra )
 					{    view.printDatosMuestra( nMuestra, muestraCopia);    }
+					else
+					{
+						view.printMensage("Muestra Ordenada invalida");
+					}
 					break;
 					
 				case 8:	
@@ -194,7 +217,7 @@ public class Controller {
 					if ( nMuestra > 0 && muestraCopia != null && muestraCopia.length == nMuestra )
 					{    
 						muestra = muestraCopia;
-						view.printMensage("La muestra ordenada es ahora la muestra de datos a ordenar");
+						view.printMensage("La muestra ordenada (copia) es ahora la muestra de datos a ordenar");
 					}
 					break;
 
@@ -203,8 +226,13 @@ public class Controller {
 					if ( nMuestra > 0 && muestra != null && muestra.length == nMuestra )
 					{    
 						this.invertirMuestra(muestra);
-						view.printMensage("La muestra de datos fue invertida");
+						view.printMensage("La muestra de datos a ordenar fue invertida");
 					}
+					else
+					{
+						view.printMensage("Muestra invalida");
+					}
+
 					break;
 					
 				case 10:	
