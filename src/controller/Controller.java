@@ -2,8 +2,8 @@ package controller;
 
 import java.util.Scanner;
 import model.data_structures.*;
+import model.util.Sort;
 import model.vo.VOMovingViolation;
-import model.logic.Sort;
 import view.MovingViolationsManagerView;
 
 @SuppressWarnings("unused")
@@ -23,6 +23,84 @@ public class Controller {
 		view = new MovingViolationsManagerView();
 		
 		//TODO, inicializar las estructuras de datos para la carga de informacion de archivos
+	}
+
+	/**
+	 * Leer los datos de las infracciones de los archivos.
+	 * Todas infracciones (MovingViolation) deben almacenarse en una Estructura de Datos (en el mismo orden como estan los archivos)
+	 * A partir de estos datos se obtendran muestras para evaluar los algoritmos de ordenamiento
+	 * @return numero de infracciones leidas 
+	 */
+	public int loadMovingViolations() {
+		// TODO Los datos de los archivos deben guardarse en la Estructura de Datos definida
+		
+		return 0;
+	}
+	
+	/**
+	 * Generar una muestra aleatoria de tamaNo n de los datos leidos.
+	 * Los datos de la muestra se obtienen de las infracciones guardadas en la Estructura de Datos.
+	 * @param n tamaNo de la muestra, n > 0
+	 * @return muestra generada
+	 */
+	public Comparable<VOMovingViolation> [ ] generarMuestra( int n )
+	{
+		muestra = new Comparable[ n ];
+					
+		// TODO Llenar la muestra aleatoria con los datos guardado en la estructura de datos
+		
+		return muestra;
+		
+	}
+	
+	/**
+	 * Generar una copia de una muestra. Se genera un nuevo arreglo con los mismos elementos.
+	 * @param muestra - datos de la muestra original
+	 * @return copia de la muestra
+	 */
+	public Comparable<VOMovingViolation> [ ] obtenerCopia( Comparable<VOMovingViolation> [ ] muestra)
+	{
+		Comparable<VOMovingViolation> [ ] copia = new Comparable[ muestra.length ]; 
+		for ( int i = 0; i < muestra.length; i++)
+		{    copia[i] = muestra[i];    }
+		return copia;
+	}
+	
+	/**
+	 * Ordenar datos aplicando el algoritmo ShellSort
+	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
+	 */
+	public void ordenarShellSort( Comparable<VOMovingViolation>[ ] datos ) {
+		
+		Sort.ordenarShellSort(datos);
+	}
+	
+	/**
+	 * Ordenar datos aplicando el algoritmo MergeSort
+	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
+	 */
+	public void ordenarMergeSort( Comparable<VOMovingViolation>[ ] datos ) {
+
+		Sort.ordenarMergeSort(datos);
+	}
+
+	/**
+	 * Ordenar datos aplicando el algoritmo QuickSort
+	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
+	 */
+	public void ordenarQuickSort( Comparable<VOMovingViolation>[ ] datos ) {
+
+		Sort.ordenarQuickSort(datos);
+	}
+
+	/**
+	 * Invertir una muestra de datos (in place).
+	 * datos[0] y datos[N-1] se intercambian, datos[1] y datos[N-2] se intercambian, datos[2] y datos[N-3] se intercambian, ...
+	 * @param datos - conjunto de datos a invertir (inicio) y conjunto de datos invertidos (final)
+	 */
+	public void invertirMuestra( Comparable[ ] datos ) {
+
+		// TODO implementar
 	}
 	
 	public void run() {
@@ -51,10 +129,10 @@ public class Controller {
 					break;
 					
 				case 2:
-					// Obtener muestra de infracciones a ordenar
+					// Generar muestra de infracciones a ordenar
 					view.printMensage("Dar tamaNo de la muestra: ");
 					nMuestra = sc.nextInt();
-					muestra = this.obtenerMuestra( nMuestra );
+					muestra = this.generarMuestra( nMuestra );
 					view.printMensage("Muestra generada");
 					break;
 					
@@ -135,84 +213,6 @@ public class Controller {
 					break;
 			}
 		}
-	}
-
-	
-	/**
-	 * Leer los datos de las infracciones de los archivos.
-	 * Todas infracciones (MovingViolation) deben almacenarse en una Estructura de Datos (sin tener algun orden en particular)
-	 * A partir de estos datos se obtendran muestras para evaluar los algoritmos de ordenamiento
-	 * @return numero de infracciones leidas 
-	 */
-	public int loadMovingViolations() {
-		// TODO implementar
-		
-		return 0;
-	}
-	
-	/**
-	 * Obtener una muestra aleatoria de tamaNo n de los datos leidos 
-	 * @param n tamaNo de la muestra, n > 0
-	 * @return muestra generada
-	 */
-	public Comparable<VOMovingViolation> [ ] obtenerMuestra( int n )
-	{
-		muestra = new Comparable[ n ];
-					
-		// TODO Llenar la muestra aleatoria con los datos leidos
-		
-		return muestra;
-		
-	}
-	
-	/**
-	 * Generar una copia de una muestra. Se genera un nuevo arreglo con los mismos elementos.
-	 * @param muestra - datos de la muestra original
-	 * @return copia de la muestra
-	 */
-	public Comparable<VOMovingViolation> [ ] obtenerCopia( Comparable<VOMovingViolation> [ ] muestra)
-	{
-		Comparable<VOMovingViolation> [ ] copia = new Comparable[ muestra.length ]; 
-		for ( int i = 0; i < muestra.length; i++)
-		{    copia[i] = muestra[i];    }
-		return copia;
-	}
-	
-	/**
-	 * Ordenar datos aplicando el algoritmo ShellSort
-	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
-	 */
-	public void ordenarShellSort( Comparable<VOMovingViolation>[ ] datos ) {
-		
-		Sort.ordenarShellSort(datos);
-	}
-	
-	/**
-	 * Ordenar datos aplicando el algoritmo MergeSort
-	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
-	 */
-	public void ordenarMergeSort( Comparable<VOMovingViolation>[ ] datos ) {
-
-		Sort.ordenarMergeSort(datos);
-	}
-
-	/**
-	 * Ordenar datos aplicando el algoritmo QuickSort
-	 * @param datos - conjunto de datos a ordenar (inicio) y conjunto de datos ordenados (final)
-	 */
-	public void ordenarQuickSort( Comparable<VOMovingViolation>[ ] datos ) {
-
-		Sort.ordenarQuickSort(datos);
-	}
-
-	/**
-	 * Invertir una muestra de datos (in place).
-	 * datos[0] y datos[N-1] se intercambian, datos[1] y datos[N-2] se intercambian, datos[2] y datos[N-3] se intercambian, ...
-	 * @param datos - conjunto de datos a invertir (inicio) y conjunto de datos invertidos (final)
-	 */
-	public void invertirMuestra( Comparable[ ] datos ) {
-
-		// TODO implementar
 	}
 
 }
