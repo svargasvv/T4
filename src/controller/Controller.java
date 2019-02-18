@@ -6,6 +6,8 @@ import model.util.Sort;
 import model.vo.VOMovingViolation;
 import view.MovingViolationsManagerView;
 
+
+
 @SuppressWarnings("unused")
 public class Controller {
 
@@ -21,7 +23,7 @@ public class Controller {
 
 	public Controller() {
 		view = new MovingViolationsManagerView();
-		
+	
 		//TODO inicializar las estructuras de datos para la carga de informacion de archivos
 	}
 
