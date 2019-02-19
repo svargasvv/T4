@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - MVC",
+            "request": "launch",
+            "mainClass": "main.MVC",
+            "projectName": "esqueleto_t4_201910"
+        }
+    ]
+}
