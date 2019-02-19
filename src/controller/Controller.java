@@ -28,8 +28,8 @@ public class Controller {
 
 	public Controller() {
 		view = new MovingViolationsManagerView();
-		infracciones= new  LinkedList<VOMovingViolation>();
-		
+		infracciones = new LinkedList<VOMovingViolation>();
+
 		// TODO inicializar las estructuras de datos para la carga de informacion de
 		// archivos
 	}
@@ -51,12 +51,12 @@ public class Controller {
 
 	public int cargar(String pRuta) {
 		int counter = 0;
-		
+
 		File archivo = new File(pRuta);
 		try {
-			
+
 			Scanner sc = new Scanner(archivo);
-			
+
 			sc.nextLine();
 			while (sc.hasNext()) {
 				counter++;
@@ -80,14 +80,14 @@ public class Controller {
 						datosActual.get(9), datosActual.get(12), datosActual.get(15)));
 
 			}
-			archivo= null;
+			archivo = null;
 			sc.reset();
 			sc.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
 		return counter;
-		
+
 	}
 
 	/**
@@ -99,18 +99,16 @@ public class Controller {
 	 * @return muestra generada
 	 */
 	public Comparable<VOMovingViolation>[] generarMuestra(int n) {
-		if (n<0 || n >240000)
-		{
+		if (n < 0 || n > 240000) {
 			return null;
 		}
 		muestra = new Comparable[n];
 		int contador = 0;
-		int aleatorio= 0;
-		while(contador!=n)
-		{
+		int aleatorio = 0;
+		while (contador != n) {
 			contador++;
-			aleatorio= (int) (Math.random()*240000); 
-			muestra[contador]= infracciones.getElement(aleatorio);
+			aleatorio = (int) (Math.random() * 240000);
+			muestra[contador] = infracciones.getElement(aleatorio);
 		}
 		// TODO Llenar la muestra aleatoria con los datos guardados en la estructura de
 		// datos
@@ -176,7 +174,16 @@ public class Controller {
 	 *              invertidos (final)
 	 */
 	public void invertirMuestra(Comparable[] datos) {
+		int n = datos.length;
+		int contador = 0;
+		while (contador != n / 2) {
 
+			Comparable temporal = datos[contador];
+			datos[contador] = datos[n - contador - 1];
+			datos[n-contador-1]= temporal ;
+			contador++;
+
+		}
 		// TODO implementar
 	}
 

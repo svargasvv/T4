@@ -37,7 +37,9 @@ public class Sort {
 	 */
 	private boolean less(Comparable v, Comparable w)
 	{
-		// TODO implementar
+		if (v.compareTo(w)<0){
+			return true;
+		}
 		return false;
 	}
 	
@@ -49,6 +51,9 @@ public class Sort {
 	 */
 	private void exchange( Comparable[] datos, int i, int j)
 	{
+		Comparable temporal= datos[i];
+		datos[i]= datos[j];
+		datos[j]= temporal;
 		// TODO implementar
 	}
 
