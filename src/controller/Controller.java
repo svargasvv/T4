@@ -107,7 +107,8 @@ public class Controller {
 		int aleatorio = 0;
 		while (counter != n) {
 			counter++;
-			aleatorio = (int) (Math.random() * 240000);
+			aleatorio = (int) (Math.random() * n);
+			System.out.println(n);
 			muestra[counter] = infracciones.getElement(aleatorio);
 		}
 		// TODO Llenar la muestra aleatoria con los datos guardados en la estructura de
