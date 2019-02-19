@@ -1,6 +1,8 @@
 package model.data_structures;
 
-public class LinkedList<T> implements Iterable<T> , ILinkedList<T> {
+import java.util.Iterator;
+
+public class LinkedList<T> implements Iterable<T> , ILinkedList<T>{
 	private Node<T> cabeza;
 	private int size;
 	
