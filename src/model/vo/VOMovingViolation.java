@@ -25,10 +25,10 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	 */
 	public VOMovingViolation( String pObjectId,String pLocation, String pTicketIssueDate, String pTotalpaid, String pAccidentIndicator, String pViolationDesc)
 	{
-		objectId =Integer.toString(pObjectId);
+		objectId =Integer.parseInt(pObjectId);
 		location = pLocation;
-		ticketIssueDate = null; // TODO fix
-		totalPaid = 							
+		ticketIssueDate = null; 
+		totalPaid = Short.parseShort(pTotalpaid);						
 
 	}
 
