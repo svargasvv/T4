@@ -103,12 +103,12 @@ public class Controller {
 			return null;
 		}
 		muestra = new Comparable[n];
-		int contador = 0;
+		int counter = 0;
 		int aleatorio = 0;
-		while (contador != n) {
-			contador++;
+		while (counter != n) {
+			counter++;
 			aleatorio = (int) (Math.random() * 240000);
-			muestra[contador] = infracciones.getElement(aleatorio);
+			muestra[counter] = infracciones.getElement(aleatorio);
 		}
 		// TODO Llenar la muestra aleatoria con los datos guardados en la estructura de
 		// datos
@@ -175,13 +175,13 @@ public class Controller {
 	 */
 	public void invertirMuestra(Comparable[] datos) {
 		int n = datos.length;
-		int contador = 0;
-		while (contador != n / 2) {
+		int counter = 0;
+		while (counter != n / 2) {
 
-			Comparable temporal = datos[contador];
-			datos[contador] = datos[n - contador - 1];
-			datos[n-contador-1]= temporal ;
-			contador++;
+			Comparable temporal = datos[counter];
+			datos[counter] = datos[n - counter - 1];
+			datos[n - counter - 1] = temporal;
+			counter++;
 
 		}
 		// TODO implementar
