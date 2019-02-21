@@ -2,7 +2,10 @@ package controller;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -25,11 +28,11 @@ public class Controller {
 
 	// Copia de la muestra de datos a ordenar
 	Comparable<VOMovingViolation>[] muestraCopia;
-
+	SimpleDateFormat sdf;
 	public Controller() {
 		view = new MovingViolationsManagerView();
 		infracciones = new LinkedList<VOMovingViolation>();
-
+		sdf= new SimpleDateFormat ("yyyy-MM-dd HH:mm");
 		// TODO inicializar las estructuras de datos para la carga de informacion de
 		// archivos
 	}
@@ -75,9 +78,10 @@ public class Controller {
 					datosActual.add(st.nextToken());
 
 				}
-
-				infracciones.add(new VOMovingViolation(datosActual.get(0), datosActual.get(2), datosActual.get(13),
-						datosActual.get(9), datosActual.get(12), datosActual.get(15)));
+				String x[]= datosActual.get(13).split("T");
+				String fecha= x[0]+" "+ x[1];
+				infracciones.add(new VOMovingViolation(datosActual.get(0), datosActual.get(2), fecha,
+						datosActual.get(9), datosActual.get(12), datosActual.get(15),sdf));
 
 			}
 			archivo = null;
@@ -104,12 +108,20 @@ public class Controller {
 		}
 		muestra = new Comparable[n];
 		int counter = 0;
+		Random numero = new Random();
 		int aleatorio = 0;
 		while (counter != n) {
-			counter++;
-			aleatorio = (int) (Math.random() * n);
-			System.out.println(n);
+			
+			if (counter%200==0)
+			{
+				
+				numero= new Random(System.currentTimeMillis() );
+			}
+			aleatorio = numero.nextInt(n);
+			
+			System.out.println(aleatorio+ "Numero");
 			muestra[counter] = infracciones.getElement(aleatorio);
+			counter++;
 		}
 		// TODO Llenar la muestra aleatoria con los datos guardados en la estructura de
 		// datos

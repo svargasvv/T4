@@ -4,10 +4,6 @@ import java.io.Serializable;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
-<<<<<<< HEAD
-
-
-=======
 public class IteratorLinkedList<T> implements ListIterator<T> , Serializable{
 private static final long serialVersionUID = 57L;
 	
@@ -95,5 +91,5 @@ private static final long serialVersionUID = 57L;
 		// TODO Auto-generated method stub
 		
 	}
->>>>>>> fb27d3b250bd8f6a58566a2209de33d52d771446
+
 }

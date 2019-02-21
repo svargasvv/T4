@@ -26,13 +26,21 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 	/**
 	 * Metodo constructor
 	 */
-	public VOMovingViolation( String pObjectId,String pLocation, String pTicketIssueDate, String pTotalpaid, String pAccidentIndicator, String pViolationDesc)
-	{
-		objectId =Integer.parseInt(pObjectId);
+	public VOMovingViolation(String pObjectId, String pLocation, String pTicketIssueDate, String pTotalpaid,
+			String pAccidentIndicator, String pViolationDesc, SimpleDateFormat pSdf) {
+		
+		objectId = Integer.parseInt(pObjectId);
 		location = pLocation;
-		ticketIssueDate = null; 
-		totalPaid = Short.parseShort(pTotalpaid);						
-
+		try {
+			ticketIssueDate = pSdf.parse(pTicketIssueDate);
+		} catch (ParseException e) {
+			ticketIssueDate= null;
+			e.printStackTrace();
+		}
+		
+		totalPaid = Short.parseShort(pTotalpaid);
+		accidentIndicator = (pAccidentIndicator.equals("Yes"))? true:false;
+		violationDesc= pViolationDesc;
 	}
 
 	/**
@@ -92,21 +100,19 @@ public class VOMovingViolation implements Comparable<VOMovingViolation> {
 		} else if (getTicketIssueDate().compareTo(o.getTicketIssueDate()) > 0) {
 
 			return -1;
-		}else {
-			if (objectId<o.objectId())
-			{
+		} else {
+			if (objectId < o.objectId()) {
 				return -1;
-			}
-			else if (objectId>o.objectId())
-			{
+			} else if (objectId > o.objectId()) {
 				return 1;
-			}
-			else return 0;
+			} else
+				return 0;
 		}
 	}
 
 	public String toString() {
 		// TODO Convertir objeto en String (representacion que se muestra en la consola)
-		return "-";
+		return "ObjectId: " + objectId + " Location: " + location + " ticketIssueDate " + ticketIssueDate + " totalPaid: "
+				+ totalPaid + " accidentIndicator: " + accidentIndicator + " ViolationDescription: " + violationDesc ;
 	}
 }

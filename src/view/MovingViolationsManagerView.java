@@ -25,6 +25,7 @@ public class MovingViolationsManagerView
 	
 	public void printDatosMuestra( int nMuestra, Comparable [ ] muestra)
 	{
+		System.out.println(nMuestra);
 		for ( Comparable dato : muestra)
 		{	System.out.println(  dato.toString() );    }
 	}
